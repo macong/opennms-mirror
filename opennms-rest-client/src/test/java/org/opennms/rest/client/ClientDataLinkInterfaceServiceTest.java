@@ -43,6 +43,9 @@ import org.opennms.core.test.http.annotations.Webapp;
 import org.opennms.netmgt.dao.DatabasePopulator;
 import org.opennms.netmgt.dao.db.JUnitConfigurationEnvironment;
 import org.opennms.netmgt.dao.db.JUnitTemporaryDatabase;
+import org.opennms.rest.client.internal.JerseyClientImpl;
+import org.opennms.rest.client.internal.JerseyDataLinkInterfaceService;
+import org.opennms.rest.client.internal.model.ClientDataLinkInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 
@@ -59,18 +62,20 @@ import org.springframework.test.context.ContextConfiguration;
 @JUnitConfigurationEnvironment
 @JUnitTemporaryDatabase
 @JUnitHttpServer(port = 10342, webapps = @Webapp(context = "/opennms", path = "src/test/resources/opennmsRestWebServices"))
-public class DataLinkInterfaceClientRestServiceTest {
+public class ClientDataLinkInterfaceServiceTest {
     @Autowired
     private DatabasePopulator m_databasePopulator;
     
-    private DataLinkInterfaceRestClient m_jerseyClient;
+    private JerseyDataLinkInterfaceService m_datalinkinterfaceservice;
     
     @Before
     public void setUp() throws Exception {
         MockLogAppender.setupLogging(true, "DEBUG");
-        m_jerseyClient = new DataLinkInterfaceRestClient(
+        m_datalinkinterfaceservice = new JerseyDataLinkInterfaceService();
+        JerseyClientImpl jerseyClient = new JerseyClientImpl(
                                                          "http://127.0.0.1:10342/opennms/rest/","demo","demo");
-                   m_databasePopulator.populateDatabase();        
+        m_datalinkinterfaceservice.setJerseyClient(jerseyClient);
+        m_databasePopulator.populateDatabase();        
     }
 
     @After
@@ -83,16 +88,22 @@ public class DataLinkInterfaceClientRestServiceTest {
         
         
         
-        List<DataLinkInterface> datalinkinterfacelist = m_jerseyClient.getAll();
+        List<ClientDataLinkInterface> datalinkinterfacelist = m_datalinkinterfaceservice.getAll();
         assertTrue(3 == datalinkinterfacelist.size());
         
-        DataLinkInterface datalinkinterface = m_jerseyClient.get(64);
+        ClientDataLinkInterface datalinkinterface = m_datalinkinterfaceservice.get(64);
         assertTrue(64 == Integer.parseInt(datalinkinterface.getId()));
-        
-        String xml = m_jerseyClient.getXml("links");
+
+        datalinkinterface = m_datalinkinterfaceservice.get(65);
+        assertTrue(65 == Integer.parseInt(datalinkinterface.getId()));
+
+        datalinkinterface = m_datalinkinterfaceservice.get(66);
+        assertTrue(66 == Integer.parseInt(datalinkinterface.getId()));
+
+        String xml = m_datalinkinterfaceservice.getXml("");
         assertTrue(xml.contains("count=\"3\""));
  
-        xml = m_jerseyClient.getXml("links/64");
+        xml = m_datalinkinterfaceservice.getXml("64");
         assertTrue(xml.contains("id=\"64\""));
  
     }

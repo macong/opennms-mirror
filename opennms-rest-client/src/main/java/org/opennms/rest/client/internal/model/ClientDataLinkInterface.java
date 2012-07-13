@@ -26,7 +26,7 @@
  *     http://www.opennms.com/
  *******************************************************************************/
 
-package org.opennms.rest.client;
+package org.opennms.rest.client.internal.model;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -38,7 +38,7 @@ import org.apache.commons.lang.builder.HashCodeBuilder;
 import org.apache.commons.lang.builder.ToStringBuilder;
 
 @XmlRootElement(name = "link")
-public class DataLinkInterface  implements Serializable {
+public class ClientDataLinkInterface  implements Serializable {
     private static final long serialVersionUID = 5241963830563150843L;
 
     private String m_id;
@@ -50,7 +50,7 @@ public class DataLinkInterface  implements Serializable {
     private String m_linkTypeId;
     private Date m_lastPollTime;
 
-    public DataLinkInterface() {
+    public ClientDataLinkInterface() {
 
     }
 

@@ -1,4 +1,4 @@
-package org.opennms.rest.client;
+package org.opennms.rest.client.internal;
 
 
 import javax.ws.rs.core.MediaType;

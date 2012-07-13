@@ -26,7 +26,7 @@
  *     http://www.opennms.com/
  *******************************************************************************/
 
-package org.opennms.rest.client;
+package org.opennms.rest.client.internal.model;
 
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
@@ -39,7 +39,7 @@ import java.util.List;
  * <p>OnmsMapList class.</p>
  */
 @XmlRootElement(name = "links")
-public class DataLinkInterfaceList extends LinkedList<DataLinkInterface> {
+public class ClientDataLinkInterfaceList extends LinkedList<ClientDataLinkInterface> {
 
 
 
@@ -51,7 +51,7 @@ public class DataLinkInterfaceList extends LinkedList<DataLinkInterface> {
     /**
      * <p>Constructor for OnmsMapList.</p>
      */
-    public DataLinkInterfaceList() {
+    public ClientDataLinkInterfaceList() {
         super();
     }
 
@@ -60,7 +60,7 @@ public class DataLinkInterfaceList extends LinkedList<DataLinkInterface> {
      *
      * @param c a {@link java.util.Collection} object.
      */
-    public DataLinkInterfaceList(Collection<? extends DataLinkInterface> c) {
+    public ClientDataLinkInterfaceList(Collection<? extends ClientDataLinkInterface> c) {
         super(c);
     }
 
@@ -70,7 +70,7 @@ public class DataLinkInterfaceList extends LinkedList<DataLinkInterface> {
      * @return a {@link java.util.List} object.
      */
     @XmlElement(name = "link")
-    public List<DataLinkInterface> getLinks() {
+    public List<ClientDataLinkInterface> getLinks() {
         return this;
     }
 
@@ -79,7 +79,7 @@ public class DataLinkInterfaceList extends LinkedList<DataLinkInterface> {
      *
      * @param maps a {@link java.util.List} object.
      */
-    public void setLinks(List<DataLinkInterface> links) {
+    public void setLinks(List<ClientDataLinkInterface> links) {
         clear();
         addAll(links);
     }
