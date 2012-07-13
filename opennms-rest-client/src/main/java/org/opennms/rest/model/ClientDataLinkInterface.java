@@ -26,7 +26,7 @@
  *     http://www.opennms.com/
  *******************************************************************************/
 
-package org.opennms.rest.client.internal.model;
+package org.opennms.rest.model;
 
 import java.io.Serializable;
 import java.util.Date;

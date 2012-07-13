@@ -45,7 +45,7 @@ import org.opennms.netmgt.dao.db.JUnitConfigurationEnvironment;
 import org.opennms.netmgt.dao.db.JUnitTemporaryDatabase;
 import org.opennms.rest.client.internal.JerseyClientImpl;
 import org.opennms.rest.client.internal.JerseyDataLinkInterfaceService;
-import org.opennms.rest.client.internal.model.ClientDataLinkInterface;
+import org.opennms.rest.model.ClientDataLinkInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 

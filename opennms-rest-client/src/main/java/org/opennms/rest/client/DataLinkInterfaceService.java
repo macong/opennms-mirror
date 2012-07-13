@@ -1,7 +1,7 @@
 package org.opennms.rest.client;
 
-import org.opennms.rest.client.internal.model.ClientDataLinkInterface;
-import org.opennms.rest.client.internal.model.ClientDataLinkInterfaceList;
+import org.opennms.rest.model.ClientDataLinkInterface;
+import org.opennms.rest.model.ClientDataLinkInterfaceList;
 
 public interface DataLinkInterfaceService {
     
