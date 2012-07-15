@@ -90,15 +90,27 @@ public class ClientDataLinkInterfaceServiceTest {
         
         List<ClientDataLinkInterface> datalinkinterfacelist = m_datalinkinterfaceservice.getAll();
         assertTrue(3 == datalinkinterfacelist.size());
+        for (ClientDataLinkInterface datalinkinterface: datalinkinterfacelist) {
+            Integer datalinkinterfaceId = datalinkinterface.getId();
+            if (datalinkinterfaceId == 64) {
+                checkId64(datalinkinterface);
+            } else if (datalinkinterfaceId == 65) {
+                checkId65(datalinkinterface);
+            } else if (datalinkinterfaceId == 66 ) {
+                 checkId66(datalinkinterface);
+            } else {
+                assertTrue(false);
+            }
+        }
         
         ClientDataLinkInterface datalinkinterface = m_datalinkinterfaceservice.get(64);
-        assertTrue(64 == Integer.parseInt(datalinkinterface.getId()));
+        checkId64(datalinkinterface);
 
         datalinkinterface = m_datalinkinterfaceservice.get(65);
-        assertTrue(65 == Integer.parseInt(datalinkinterface.getId()));
+        checkId65(datalinkinterface);
 
         datalinkinterface = m_datalinkinterfaceservice.get(66);
-        assertTrue(66 == Integer.parseInt(datalinkinterface.getId()));
+        checkId66(datalinkinterface);
 
         String xml = m_datalinkinterfaceservice.getXml("");
         assertTrue(xml.contains("count=\"3\""));
@@ -106,6 +118,50 @@ public class ClientDataLinkInterfaceServiceTest {
         xml = m_datalinkinterfaceservice.getXml("64");
         assertTrue(xml.contains("id=\"64\""));
  
+    }
+
+/*
+ * <link id="66"><ifIndex>1</ifIndex><lastPollTime>2012-07-15T12:59:37.747+02:00</lastPollTime>
+ * <linkTypeId>-1</linkTypeId>
+ * <nodeId>2</nodeId><nodeParentId>1</nodeParentId>
+ * <parentIfIndex>1</parentIfIndex><status>A</status></link>
+ */
+    private void checkId66(ClientDataLinkInterface datalinkinterface) {
+        assertTrue(1==datalinkinterface.getIfIndex());
+        assertTrue(2==datalinkinterface.getNodeId());
+        assertTrue(1==datalinkinterface.getNodeParentId());
+        assertTrue(1==datalinkinterface.getParentIfIndex());
+        assertTrue(-1==datalinkinterface.getLinkTypeId());
+        assertTrue("A".equals(datalinkinterface.getStatus()));
+    }
+
+    /*
+     * <link id="65"><ifIndex>2</ifIndex><lastPollTime>2012-07-15T12:59:37.663+02:00</lastPollTime>
+     * <linkTypeId>-1</linkTypeId>
+     * <nodeId>1</nodeId><nodeParentId>1</nodeParentId>
+     * <parentIfIndex>1</parentIfIndex><status>A</status></link>
+     */
+    private void checkId65(ClientDataLinkInterface datalinkinterface) {
+        assertTrue(2==datalinkinterface.getIfIndex());
+        assertTrue(1==datalinkinterface.getNodeId());
+        assertTrue(1==datalinkinterface.getNodeParentId());
+        assertTrue(1==datalinkinterface.getParentIfIndex());
+        assertTrue(-1==datalinkinterface.getLinkTypeId());
+        assertTrue("A".equals(datalinkinterface.getStatus()));
+    }
+/*
+ * <link id="64"><ifIndex>1</ifIndex><lastPollTime>2012-07-15T12:59:37.604+02:00</lastPollTime>
+ * <linkTypeId>-1</linkTypeId>
+ * <nodeId>1</nodeId><nodeParentId>1</nodeParentId>
+ * <parentIfIndex>1</parentIfIndex><status>A</status></link>
+ */
+    private void checkId64(ClientDataLinkInterface datalinkinterface) {
+        assertTrue(1==datalinkinterface.getIfIndex());
+        assertTrue(1==datalinkinterface.getNodeId());
+        assertTrue(1==datalinkinterface.getNodeParentId());
+        assertTrue(1==datalinkinterface.getParentIfIndex());
+        assertTrue(-1==datalinkinterface.getLinkTypeId());
+        assertTrue("A".equals(datalinkinterface.getStatus()));
     }
 
 }

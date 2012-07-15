@@ -41,13 +41,13 @@ import org.apache.commons.lang.builder.ToStringBuilder;
 public class ClientDataLinkInterface  implements Serializable {
     private static final long serialVersionUID = 5241963830563150843L;
 
-    private String m_id;
-    private String m_nodeId;
-    private String m_ifIndex;
-    private String m_nodeParentId;
-    private String m_parentIfIndex;
+    private Integer m_id;
+    private Integer m_nodeId;
+    private Integer m_ifIndex;
+    private Integer m_nodeParentId;
+    private Integer m_parentIfIndex;
     private String m_status;
-    private String m_linkTypeId;
+    private Integer m_linkTypeId;
     private Date m_lastPollTime;
 
     public ClientDataLinkInterface() {
@@ -66,73 +66,73 @@ public class ClientDataLinkInterface  implements Serializable {
     }
 
     @XmlAttribute
-    public String getId() {
+    public Integer getId() {
         return m_id;
     }
 
 
 
-    public void setId(String id) {
+    public void setId(Integer id) {
         m_id = id;
     }
 
 
 
-    public String getNodeId() {
+    public Integer getNodeId() {
         return m_nodeId;
     }
 
 
 
-    public void setNodeId(String nodeid) {
+    public void setNodeId(Integer nodeid) {
         m_nodeId = nodeid;
     }
 
 
 
-    public String getIfIndex() {
+    public Integer getIfIndex() {
         return m_ifIndex;
     }
 
 
 
-    public void setIfIndex(String ifIndex) {
+    public void setIfIndex(Integer ifIndex) {
         m_ifIndex = ifIndex;
     }
 
 
 
-    public String getNodeParentId() {
+    public Integer getNodeParentId() {
         return m_nodeParentId;
     }
 
 
 
-    public void setNodeParentId(String nodeParentId) {
+    public void setNodeParentId(Integer nodeParentId) {
         m_nodeParentId = nodeParentId;
     }
 
 
 
-    public String getParentIfIndex() {
+    public Integer getParentIfIndex() {
         return m_parentIfIndex;
     }
 
 
 
-    public void setParentIfIndex(String parentIfIndex) {
+    public void setParentIfIndex(Integer parentIfIndex) {
         m_parentIfIndex = parentIfIndex;
     }
 
 
 
-    public String getLinkTypeId() {
+    public Integer getLinkTypeId() {
         return m_linkTypeId;
     }
 
 
 
-    public void setLinkTypeId(String linkTypeId) {
+    public void setLinkTypeId(Integer linkTypeId) {
         m_linkTypeId = linkTypeId;
     }
 
